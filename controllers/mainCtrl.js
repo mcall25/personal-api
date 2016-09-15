@@ -4,6 +4,7 @@ var locations = require('../model/locations');
 var occupations = require('../model/occupations');
 var hobbies = require('../model/hobbies');
 var skillz = require('../model/skillz');
+var secrets = require('../model/secrets');
 
 module.exports = {
 
@@ -81,14 +82,20 @@ module.exports = {
                 }
               }
 
-      res.status(200).json(experarrs);
+              res.status(200).json(experarrs);
       }
 
         res.status(200).json(skillz);
-    }
+    },
 
+    postSkillz: function(req, res, next) {
+      skillz.push(req.body)
+      res.status(200).json(skillz)
 
-
+    },
+    getSecrets: function(req, res, next) {
+      res.json(secrets)
+  },
 
 
 }

@@ -23,7 +23,8 @@ app.get('/occupations/:type', mainCtrl.getOcccupations);
 app.get('/occupations/latest', mainCtrl.getLatest);
 app.get('/hobbies', mainCtrl.getHobbies);
 app.get('/hobbies/:type', mainCtrl.getHobbiesType);
-
+app.get('/skillz', mainCtrl.getSkills);
+app.get('/secrets/:username/:pin', middleware.verifyUser, mainCtrl.getSecrets);
 
 
 
@@ -33,9 +34,9 @@ app.put('/locations', mainCtrl.putLocation);
 
 app.post('/hobbies', mainCtrl.postHobbies);
 app.post('/occupations', mainCtrl.postOcc);
+app.post('/skillz', middleware.generateId, mainCtrl.postSkillz);
 
 
-app.get('/skillz', mainCtrl.getSkills);
 
 
 

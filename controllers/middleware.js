@@ -1,3 +1,4 @@
+var skillz = require('../model/skillz')
 module.exports = {
 
   addHeaders: function(req, res, next) {
@@ -12,6 +13,21 @@ module.exports = {
     });
 
     next();
-  }
+  },
+
+  generateId: function(req, res, next) {
+    req.body.id = skillz.length + 1;
+    next();
+
+  },
+
+  verifyUser: function(req, res, next) {
+   console.log(req.params);
+   if (req.params.username === "batman" && req.params.pin === '4949') {
+     next();
+   } else {
+     next("Invalid login!")
+   }
+ }
 
 }
